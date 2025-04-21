@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Audio Demo Launch Page</title>
+    <meta http-equiv="Permissions-Policy" content="microphone=*, camera=*">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        h1 {
+            color: #4285f4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .email-button {
+            display: inline-block;
+            background-color: #4285f4;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            margin: 20px 0;
+            transition: background-color 0.3s;
+        }
+        .email-button:hover {
+            background-color: #2a75f3;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 700px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>WebRTC Audio Demo</h1>
+    <div class="contact-info">
+        <a href="mailto:support@example.com?subject=WebRTC Audio Demo Help&body=I encountered the following issues while using the WebRTC Audio Demo:" class="email-button">
+            Open Email App to Generate DCV Issue
+        </a>
+    </div>
+    <div class="iframe-container">
+        <iframe allow="microphone" src="index.html"></iframe>
+    </div>
+</div>
+<script>
+    var ignore_onbeforeunload = false;
+    $('a[href^=mailto]').on('click',function(){
+        ignore_onbeforeunload = true;
+    });
+
+    window.addEventListener('beforeunload', function(t) {
+        console.log("LAUNCH page is unloading");
+
+        t && console.log(t);
+
+    });
+
+    // window.addEventListener('beforeunload', function(t) {
+    //     if (!ignore_onbeforeunload){
+    //         return "Halt! you are not supposed to leave!";
+    //     }
+    //     ignore_onbeforeunload = false;
+    //
+    //     t && console.log(t);
+    //     localStorage.setItem('parentUnloading', Date.now());
+    // });
+
+</script>
+</body>
+</html>
